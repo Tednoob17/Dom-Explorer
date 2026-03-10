@@ -46,7 +46,7 @@ onMounted(() => {
     .then((state) => {
       router.push({
         name: "dom-explorer",
-        hash: "#" + btoa(JSON.stringify(state)),
+        hash: "#" + b64EncodeUnicode(JSON.stringify(state)),
       });
     })
     .catch((e) => {

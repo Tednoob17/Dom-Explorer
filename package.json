@@ -10,7 +10,7 @@
     "preinstall": "cd extras/angular && bun install",
     "postinstall": "bun run postinstall:ammonia-wasm && bun run postinstall:angular && bun run --bun postinstall:nuxt",
     "postinstall:nuxt": "nuxt prepare",
-    "postinstall:ammonia-wasm": "cd extras/ammonia-wasm && make",
+    "postinstall:ammonia-wasm": "(command -v cargo >/dev/null 2>&1 && cd extras/ammonia-wasm && make) || echo '[Skip] cargo not found - using pre-built WASM files'",
     "postinstall:angular": "cd extras/angular && bun run build && rm -rf ../../public/angular && cp -r dist/browser/ ../../public/angular",
     "gentypes": "supabase gen types typescript --linked > app/utils/supabase.types.ts"
   },
